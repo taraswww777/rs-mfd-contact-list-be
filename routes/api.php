@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\GroupContactsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('contacts', [ContactsController::class, 'index']);
+Route::get('contacts/{contactId}', [ContactsController::class, 'show']);
+Route::post('contacts/{groupId}', [ContactsController::class, 'store']);
+Route::get('group-contacts', [GroupContactsController::class, 'index']);
+Route::get('group-contacts/{groupId}', [GroupContactsController::class, 'show']);
+Route::post('group-contacts/{groupId}', [GroupContactsController::class, 'store']);
+Route::get('favorites', [FavoritesController::class, 'index']);
+Route::post('favorites/{contactId}', [FavoritesController::class, 'store']);
+Route::delete('favorites/{contactId}', [FavoritesController::class, 'destroy']);
