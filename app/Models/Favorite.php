@@ -5,32 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Favorite extends Model
 {
     use HasFactory;
 
-    protected $table = 'contacts';
-
-    // Массово назначаемые атрибуты.
-    protected $fillable = [
-        'name',
-        'phone',
-        'photo',
-        'birthday',
-        'address',
-        'created_at',
-        'updated_at',
-    ];
-
+    protected $table = 'favorite_contacts';
 
     // Поля показываемые по умолчанию
     protected $visible = [
         'id',
-        'name',
-        'phone',
-        'photo',
-        'birthday',
-        'address',
+        'contactId',
     ];
 
     // Поля скрываемые по умолчанию
